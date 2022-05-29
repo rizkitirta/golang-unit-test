@@ -115,3 +115,14 @@ func TestTableTest(t *testing.T) {
 	}
 }
 
+// benchmark
+func BenchmarkTirta(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		SayHallo("Tirta")
+	}
+}
+func BenchmarkWorld(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		SayHallo("Joko Purnomo")
+	}
+}
