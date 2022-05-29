@@ -126,3 +126,16 @@ func BenchmarkWorld(b *testing.B) {
 		SayHallo("Joko Purnomo")
 	}
 }
+
+func BenchmarkSub(b *testing.B)  {
+	b.Run("Tirta", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			SayHallo("Tirta")
+		}
+	})
+	b.Run("Joko", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			SayHallo("Joko")
+		}
+	})
+}
