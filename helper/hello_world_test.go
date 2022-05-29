@@ -46,7 +46,7 @@ func TestSayHelloWithRequire(t *testing.T) {
 	fmt.Println("Test Hello require Done")
 }
 
-func TestSkip(t *testing.T)  {
+func TestSkip(t *testing.T) {
 	if runtime.GOOS == "windows" {
 		t.Skip("Skip on windows")
 	}
@@ -61,4 +61,20 @@ func TestMain(m *testing.M) {
 	fmt.Println("SEBELUM UNIT TEST")
 	m.Run()
 	fmt.Println("SESUDAH UNIT TEST")
+}
+
+func TestSubTest(t *testing.T) {
+
+	result := SayHallo("subtest")
+	assert.Equal(t, "Hello subtest", result)
+
+	t.Run("Hello", func(t *testing.T) {
+		result := SayHallo("hello")
+		assert.Equal(t, "Hello hello", result)
+	})
+
+	t.Run("World", func(t *testing.T) {
+		result := SayHallo("World")
+		assert.Equal(t, "Hello World", result)
+	})
 }
